@@ -212,11 +212,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         else              h.val   = val;
 
         // fix-up any right-leaning links
-        if (isRed(h.right) && !isRed(h.left))      h = rotateLeft(h);
-        if (isRed(h.left)  &&  isRed(h.left.left)) h = rotateRight(h);
-        if (isRed(h.left)  &&  isRed(h.right))     flipColors(h);
-        h.size = size(h.left) + size(h.right) + 1;
-
+	h = balance(h);
         return h;
     }
 
